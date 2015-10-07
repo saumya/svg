@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello SVG</title>
+	<style type="text/css">
+		#sImage{
+			width: 100%;
+			height: 100vh;
+			background-color: #CCCCCC;
+		}
+		#svg1{
+			position: relative;
+			width: 50%;
+			height: 100%;
+			background-color: #DDDDDD;
+			margin: auto auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="sImage">
+		<object type="image/svg+xml" id="svg1" data="mySvg2.svg"></object>
+	</div>
+	<script type="text/javascript">
+		(function(){
+			console.log('Hello');
+			var svgObj = document.getElementById('svg1');
+			//var svgDoc = svgObj.contentDocument;
+			var svgDoc = null; // just initialise
+			svgObj.addEventListener("load",function(event){
+				console.group("SVG Loaded : Play with it.");
+				console.log("SVG : Load : event",event);
+				svgDoc = svgObj.contentDocument;
+				console.log('svgObj : 2 : ',svgObj);
+				console.log('svgDoc : 2 : ',svgDoc);
+				console.groupEnd();
+				//SVG interactivity
+				var btnCenter = svgDoc.getElementById('partCenter');
+				btnCenter.onclick = function(event1){
+					console.log("SVG : Menu : Center : Click : event",event1);
+				};
+			});
+			console.group("HTML document Loaded : ");
+			console.log('svgObj : 1 : ',svgObj);
+			console.log('svgDoc : 1 : ',svgDoc);
+			console.groupEnd();
+		})();
+	</script>
+</body>
+</html>
