@@ -43,21 +43,29 @@
 		</style>
       <circle class="radial-progress-background" r="" cx="5em" cy="5em" fill="transparent" stroke-dasharray="0em" stroke-dashoffset="0em"></circle>
       <circle class="radial-progress-cover" r="" cx="5em" cy="5em" fill="transparent" stroke-dasharray="0em" stroke-dashoffset="0"></circle>
+      <text id="value" x="4em" y="5em" transform="rotate(90 80 80)">1.0</text>
       <script type="text/javascript"><![CDATA[
       	window.onload = function () {
 			var radius = 3;
 			var circumference = 2 * radius * Math.PI; 
-			var minValue = 0;
-			var maxValue = 100;
 			var els = document.querySelectorAll('circle');
 			Array.prototype.forEach.call(els, function (el) {
 				el.setAttribute('stroke-dasharray', circumference + 'em');
 				el.setAttribute('r', radius + 'em');
 			});
-			var value = 0.15;
+
+			setValueOfCircle(0.25);
+		}; 
+		var setValueOfCircle = function(newValue){
+			var value = newValue;
+			var radius = 3;
+			var circumference = 2 * radius * Math.PI;
 			var offset = -(circumference / 1) * value + 'em';
 			document.querySelector('.radial-progress-cover').setAttribute('stroke-dashoffset', offset);
-		}; 
+			//
+			var t = document.getElementById('value');
+			t.innerHTML = (newValue*100)+'%';
+		};
       ]]></script>
     </svg>
 	</div>
