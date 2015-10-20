@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Progress Bar</title>
+</head>
+<body>
+
+	<div class="svg radial-progress">
+    <svg height="10em" width="10em">
+		<style type="text/css" >
+			<![CDATA[
+				.svg.radial-progress {
+					position: relative;
+					display: inline-block;
+				}
+				svg {
+					transform: rotate(270deg);
+				}
+				circle {
+					stroke-width: 0.3em;
+					fill: transparent;
+					transform: rotate(0.1deg); /* to fix Firefox */
+				}
+
+				.radial-progress-background {
+					stroke: orange;
+				}
+				.radial-progress-cover {
+					stroke: #DEDEDE;
+					stroke-width: 0.31em;
+					border: 12px solid red;
+				}
+				.radial-progress-center {
+					fill: #CCC;
+				}
+				.radial-fill {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			]]>
+		</style>
+      <circle class="radial-progress-background" r="" cx="5em" cy="5em" fill="transparent" stroke-dasharray="0em" stroke-dashoffset="0em"></circle>
+      <circle class="radial-progress-cover" r="" cx="5em" cy="5em" fill="transparent" stroke-dasharray="0em" stroke-dashoffset="0"></circle>
+      <script type="text/javascript"><![CDATA[
+      	window.onload = function () {
+			var radius = 3;
+			var circumference = 2 * radius * Math.PI; 
+			var minValue = 0;
+			var maxValue = 100;
+			var els = document.querySelectorAll('circle');
+			Array.prototype.forEach.call(els, function (el) {
+				el.setAttribute('stroke-dasharray', circumference + 'em');
+				el.setAttribute('r', radius + 'em');
+			});
+			var value = 0.15;
+			var offset = -(circumference / 1) * value + 'em';
+			document.querySelector('.radial-progress-cover').setAttribute('stroke-dashoffset', offset);
+		}; 
+      ]]></script>
+    </svg>
+	</div>
+</body>
+</html>
