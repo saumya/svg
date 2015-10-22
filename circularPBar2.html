@@ -4,10 +4,71 @@
 	<title>Progress Bar 2</title>
 </head>
 <body>
-
-	<div class="svg radial-progress" style="left:20px;top:20px;">
-    	<object type="image/svg+xml" data="pBar.svg"></object>
-    	<object type="image/svg+xml" data="pBar.svg"></object>
+	<div id="svgContainer" style="left:20px;top:20px;">
+		<!--
+    	<object id="svg1" type="image/svg+xml" data="pBar.svg"></object>
+    	<object id="svg2" type="image/svg+xml" data="pBar.svg"></object>
+    	-->
 	</div>
+	<script type="text/javascript" charset="utf-8">
+		/*
+		(function(){
+			//console.log('Hello');
+			var svgObj1 = document.getElementById('svg1');
+			var svgObj2 = document.getElementById('svg2');
+			var svgDoc1 = null; // just initialise
+			var svgDoc2 = null; // just initialise
+			svgObj1.addEventListener("load",function(event){
+				//debugger;
+				console.group("SVG Loaded : svgObj1");
+				console.log("SVG : Load : event",event);
+				svgDoc1 = svgObj1.contentDocument;
+				//console.log('svgObj : 2 : ',svgObj1);
+				console.log('svgDoc : 2 : ',svgDoc1);
+				console.groupEnd();
+				//SVG interactivity
+				//var btnCenter = svgDoc.getElementById('partCenter');
+			});
+			svgObj2.addEventListener("load",function(event){
+				console.group("SVG Loaded : svgObj2");
+				console.log("SVG : Load : event",event);
+				svgDoc2 = svgObj2.contentDocument;
+				//console.log('svgObj : 3 : ',svgObj2);
+				console.log('svgDoc : 3 : ',svgDoc2);
+				console.groupEnd();
+				//SVG interactivity
+				//var btnCenter = svgDoc.getElementById('partCenter');
+			});
+			//console.group("HTML document Loaded : ");
+			//console.groupEnd();
+		})();
+		var parentFunction = function(){
+			//alert('parentFunction');
+		}*/
+		/*
+		var sObj1 = document.createElement('Object');
+		sObj1.setAttribute('type','image/svg+xml');
+		sObj1.setAttribute('id','idSObj1');
+		document.body.appendChild(sObj1);
+		*/
+		(function(){
+			var svgContainer = document.getElementById('svgContainer');
+			var addSVG = function(){
+				var sObj1 = document.createElement('Object');
+				sObj1.setAttribute('type','image/svg+xml');
+				//sObj1.setAttribute('id','idSObj1');
+				sObj1.setAttribute('data',"pBar.svg");
+				svgContainer.appendChild(sObj1);
+				return sObj1;
+			};
+			addSVG();
+			addSVG();
+			var svgObj = addSVG();
+			var svgDoc1 = svgObj.contentDocument;
+			console.log('svgDoc : 2 : ',svgDoc1);
+			var textNode = svgDoc1.getElementById('value');
+			console.log('textNode',textNode);
+		})();
+	</script>
 </body>
 </html>

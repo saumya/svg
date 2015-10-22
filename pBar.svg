@@ -43,8 +43,11 @@
             t.innerHTML = (newValue*100)+'%';
           };
           setValueOfCircle(0.40);
+          //parent.parentFunction();
         })();
-        
+        var aFunction = function(){
+          console.log('Exposed Function');
+        }
         
     </script>
 </svg>
